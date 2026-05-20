@@ -1,0 +1,44 @@
+<mujoco model="humanoid">
+
+    <option gravity="0 0 -9.81"/>
+
+    <worldbody>
+
+        <body name="torso" pos="0 0 1">
+
+            <joint type="free"/>
+
+            <geom
+                type="box"
+                size=".1 .1 .2"/>
+
+            <body
+                name="right_arm"
+                pos="0 -.2 0">
+
+                <joint
+                    name="right_shoulder"
+                    type="hinge"
+                    axis="0 1 0"
+                    damping="8"/>
+
+                <geom
+                    type="capsule"
+                    fromto="0 0 0 .3 0 0"
+                    size=".04"/>
+
+            </body>
+
+        </body>
+
+    </worldbody>
+
+    <actuator>
+
+        <position
+            joint="right_shoulder"
+            kp="20"/>
+
+    </actuator>
+
+</mujoco>
