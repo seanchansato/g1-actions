@@ -32,6 +32,7 @@ _ARM_KEYWORDS = ("shoulder", "elbow", "wrist")
 def _is_arm(name):
     return any(k in name for k in _ARM_KEYWORDS)
 
+
 _GAINS = {
     "hip":            (100.0, 10.0),
     "knee":           (100.0, 10.0),
@@ -103,22 +104,73 @@ def main():
         data.qpos[qpos_adr] = target.get(act_name, 0.0)
     mujoco.mj_forward(model, data)
 
+    # Selectable arm joints in order
+    _ARM_JOINTS = [
+        "right_shoulder_pitch", "right_shoulder_roll", "right_shoulder_yaw",
+        "right_elbow", "right_wrist_roll", "right_wrist_pitch", "right_wrist_yaw",
+        "left_shoulder_pitch",  "left_shoulder_roll",  "left_shoulder_yaw",
+        "left_elbow",  "left_wrist_roll",  "left_wrist_pitch",  "left_wrist_yaw",
+    ]
+    _ARM_JOINTS = [j for j in _ARM_JOINTS if j in acts]
+
+    selected = [0]   # index into _ARM_JOINTS
     keyframes = []
 
+    _GLFW_UP    = 265
+    _GLFW_DOWN  = 264
+    _STEP_FINE  = 0.02   # rad per keypress
+    _STEP_COARSE = 0.1
+
+    def _print_selected():
+        j = _ARM_JOINTS[selected[0]]
+        val = data.qpos[acts[j][0]]
+        print(f"  [{selected[0]+1:2d}/{len(_ARM_JOINTS)}] {j:30s}  {val:+.3f} rad")
+
     def key_callback(keycode):
-        if keycode != ord('K'):
-            return
-        ctrl_snap = [float(data.qpos[acts[n][0]]) if n in acts else 0.0
-                     for n in joint_names]
-        keyframes.append(ctrl_snap)
-        rsp = data.qpos[acts["right_shoulder_pitch"][0]] if "right_shoulder_pitch" in acts else 0
-        print(f"  keyframe {len(keyframes):2d} recorded  "
-              f"(right_shoulder_pitch={rsp:.3f})")
+        ch = chr(keycode) if keycode < 256 else None
+
+        if ch == 'K':
+            ctrl_snap = [float(data.qpos[acts[n][0]]) if n in acts else 0.0
+                         for n in joint_names]
+            keyframes.append(ctrl_snap)
+            print(f"  --- keyframe {len(keyframes)} recorded ---")
+
+        elif ch == '\t':                          # Tab — next joint
+            selected[0] = (selected[0] + 1) % len(_ARM_JOINTS)
+            _print_selected()
+
+        elif ch == '`':                           # backtick — previous joint
+            selected[0] = (selected[0] - 1) % len(_ARM_JOINTS)
+            _print_selected()
+
+        elif keycode == _GLFW_UP:
+            j = _ARM_JOINTS[selected[0]]
+            data.qpos[acts[j][0]] += _STEP_FINE
+            _print_selected()
+
+        elif keycode == _GLFW_DOWN:
+            j = _ARM_JOINTS[selected[0]]
+            data.qpos[acts[j][0]] -= _STEP_FINE
+            _print_selected()
+
+        elif ch == ']':                           # coarse +
+            j = _ARM_JOINTS[selected[0]]
+            data.qpos[acts[j][0]] += _STEP_COARSE
+            _print_selected()
+
+        elif ch == '[':                           # coarse -
+            j = _ARM_JOINTS[selected[0]]
+            data.qpos[acts[j][0]] -= _STEP_COARSE
+            _print_selected()
 
     print("Controls:")
-    print("  click+drag       — move joints freely")
+    print("  Tab / `          — next / previous joint")
+    print("  Up / Down arrow  — nudge ±0.02 rad")
+    print("  ] / [            — nudge ±0.1 rad")
     print("  K                — record current pose as a keyframe")
-    print("  close window     — finish and save\n")
+    print("  close window     — finish and save")
+    print()
+    _print_selected()
 
     with mujoco.viewer.launch_passive(
         model, data, key_callback=key_callback
@@ -126,17 +178,15 @@ def main():
         while viewer.is_running():
             for act_name, (qpos_adr, dof_adr, ctrl_idx, kp, kd) in acts.items():
                 if _is_arm(act_name):
-                    # Gravity compensation — arm stays wherever placed
+                    # Gravity compensation: arm holds wherever placed, no snap-back
                     data.ctrl[ctrl_idx] = (
                         data.qfrc_bias[dof_adr] - kd * data.qvel[dof_adr]
                     )
                 else:
-                    # Legs/waist: PD hold at target
                     q_des = target.get(act_name, 0.0)
                     q     = data.qpos[qpos_adr]
                     dq    = data.qvel[dof_adr]
                     data.ctrl[ctrl_idx] = kp * (q_des - q) - kd * dq
-
             mujoco.mj_step(model, data)
             viewer.sync()
 
