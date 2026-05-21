@@ -1,7 +1,10 @@
 import sys
 from simulator import Simulator
 from controller import Controller
+from actions.flexible import Flexible
 from actions.salute import Salute
+from actions.shrug import Shrug
+from actions.speak import Speak
 from actions.wave import Wave
 from actions.hands_up import HandsUp
 from actions.wave_recorded import (
@@ -15,7 +18,10 @@ from actions.wave_recorded import (
 
 ACTIONS = {
     # Scripted (keyframe)
+    "flexible":      Flexible,
     "salute":        Salute,
+    "shrug":         Shrug,
+    "speak":         Speak,
     "wave":          Wave,
     "hands_up":      HandsUp,
     # Recorded (real robot)
