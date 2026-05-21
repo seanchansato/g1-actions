@@ -151,6 +151,95 @@ SHRUG = {
     "right_wrist_yaw":      -1.3923,
 }
 
+# Speaking2 gesture — 4 keyframes recorded from simulation.
+SPEAKING2_1 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0007,
+    "waist_pitch": 0.0681,
+
+    "left_shoulder_pitch": -0.0125,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.1825,
+    "left_elbow":          -0.0784,
+    "left_wrist_roll":     -0.3038,
+    "left_wrist_pitch":    -0.2937,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch":  0.2563,
+    "right_shoulder_roll":  -0.1923,
+    "right_shoulder_yaw":   -0.0065,
+    "right_elbow":          -0.2129,
+    "right_wrist_roll":     -0.0052,
+    "right_wrist_pitch":    -0.2976,
+    "right_wrist_yaw":      -0.0001,
+}
+
+SPEAKING2_2 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0074,
+    "waist_pitch": 0.0703,
+
+    "left_shoulder_pitch": -0.0125,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":    0.7175,
+    "left_elbow":          -0.2783,
+    "left_wrist_roll":     -0.1038,
+    "left_wrist_pitch":    -0.1937,
+    "left_wrist_yaw":       0.1974,
+
+    "right_shoulder_pitch": -0.0436,
+    "right_shoulder_roll":  -0.3923,
+    "right_shoulder_yaw":   -0.8065,
+    "right_elbow":          -0.2128,
+    "right_wrist_roll":      0.9948,
+    "right_wrist_pitch":    -0.0976,
+    "right_wrist_yaw":       0.1999,
+}
+
+SPEAKING2_3 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0071,
+    "waist_pitch": 0.0683,
+
+    "left_shoulder_pitch": -0.0125,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":    0.7175,
+    "left_elbow":           0.2217,
+    "left_wrist_roll":     -0.2038,
+    "left_wrist_pitch":    -0.1937,
+    "left_wrist_yaw":       0.1974,
+
+    "right_shoulder_pitch": -0.0436,
+    "right_shoulder_roll":  -0.3922,
+    "right_shoulder_yaw":   -0.8065,
+    "right_elbow":           0.3872,
+    "right_wrist_roll":      0.9948,
+    "right_wrist_pitch":    -0.0976,
+    "right_wrist_yaw":       0.1999,
+}
+
+SPEAKING2_4 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0125,
+    "waist_pitch": 0.1403,
+
+    "left_shoulder_pitch": -0.3125,
+    "left_shoulder_roll":   0.0935,
+    "left_shoulder_yaw":    0.1175,
+    "left_elbow":           0.2217,
+    "left_wrist_roll":     -0.8038,
+    "left_wrist_pitch":    -0.0937,
+    "left_wrist_yaw":       0.0974,
+
+    "right_shoulder_pitch": -0.3435,
+    "right_shoulder_roll":  -0.1923,
+    "right_shoulder_yaw":   -0.2065,
+    "right_elbow":           0.2872,
+    "right_wrist_roll":      1.2745,
+    "right_wrist_pitch":     0.0023,
+    "right_wrist_yaw":       0.2999,
+}
+
 # Both arms raised forming a heart shape above the head.
 HEART = {
     "waist_yaw":   0.0,
