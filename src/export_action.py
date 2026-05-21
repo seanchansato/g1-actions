@@ -94,10 +94,9 @@ def convert(keyframes, rate_hz=20.0, hold_on_complete=False, next_action=None):
 # Import poses inline so this script is self-contained when run from src/.
 sys.path.insert(0, "src")
 try:
-    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED
+    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4
 except ImportError:
-    # Already on sys.path (running from src/)
-    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED  # noqa: F811
+    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4  # noqa: F811
 
 ACTIONS = {
     "salute": {
@@ -114,6 +113,28 @@ ACTIONS = {
         "keyframes": [
             (0.0, HOME),
             (2.0, HANDS_UP),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "shrug": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, SHRUG),
+            (3.5, SHRUG),
+            (5.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "flexible": {
+        "keyframes": [
+            (0.0,  HOME),
+            (1.5,  FLEX1),
+            (3.0,  FLEX2),
+            (4.5,  FLEX3),
+            (6.0,  FLEX4),
+            (7.5,  HOME),
         ],
         "hold_on_complete": False,
         "next_action": None,
