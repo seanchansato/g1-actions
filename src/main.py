@@ -4,11 +4,27 @@ from controller import Controller
 from actions.salute import Salute
 from actions.wave import Wave
 from actions.hands_up import HandsUp
+from actions.wave_recorded import (
+    WaveRecorded,
+    HandsUpRecorded,
+    ShakeHand,
+    ShowHand,
+    DoPayment,
+    DownPayment,
+)
 
 ACTIONS = {
-    "salute":    Salute,
-    "wave":      Wave,
-    "hands_up":  HandsUp,
+    # Scripted (keyframe)
+    "salute":        Salute,
+    "wave":          Wave,
+    "hands_up":      HandsUp,
+    # Recorded (real robot)
+    "face_wave":     WaveRecorded,
+    "hands_up_rec":  HandsUpRecorded,
+    "shake_hand":    ShakeHand,
+    "show_hand":     ShowHand,
+    "do_payment":    DoPayment,
+    "down_payment":  DownPayment,
 }
 
 
