@@ -94,9 +94,9 @@ def convert(keyframes, rate_hz=20.0, hold_on_complete=False, next_action=None):
 # Import poses inline so this script is self-contained when run from src/.
 sys.path.insert(0, "src")
 try:
-    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4
+    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4, TEST, SPEAK1, SPEAK2, ARMS_UP, T_POSE, COME_CLOSER_1, COME_CLOSER_2, HEART
 except ImportError:
-    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4  # noqa: F811
+    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4, TEST, SPEAK1, SPEAK2, ARMS_UP, T_POSE, COME_CLOSER_1, COME_CLOSER_2, HEART  # noqa: F811
 
 ACTIONS = {
     "salute": {
@@ -127,6 +127,70 @@ ACTIONS = {
         "hold_on_complete": False,
         "next_action": None,
     },
+    "heart": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, HEART),
+            (3.5, HEART),
+            (5.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "come_closer": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, COME_CLOSER_1),
+            (2.5, COME_CLOSER_2),
+            (3.5, COME_CLOSER_1),
+            (4.5, COME_CLOSER_2),
+            (5.5, COME_CLOSER_1),
+            (7.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "t_position": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, T_POSE),
+            (3.5, T_POSE),
+            (5.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "arms_up": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, ARMS_UP),
+            (3.5, ARMS_UP),
+            (5.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "speak": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, SPEAK1),
+            (3.0, SPEAK2),
+            (4.5, SPEAK1),
+            (6.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "test": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, TEST),
+            (3.5, TEST),
+            (5.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
     "flexible": {
         "keyframes": [
             (0.0,  HOME),
@@ -145,7 +209,7 @@ ACTIONS = {
 def main():
     parser = argparse.ArgumentParser(description="Export a PoseAction to recording JSON")
     parser.add_argument("--action", required=True, choices=list(ACTIONS.keys()))
-    parser.add_argument("--out", required=True, help="Output JSON path")
+    parser.add_argument("--out", "-o", required=True, help="Output JSON path")
     parser.add_argument("--rate", type=float, default=20.0, help="Sample rate in Hz")
     args = parser.parse_args()
 

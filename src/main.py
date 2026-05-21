@@ -1,9 +1,14 @@
 import sys
 from simulator import Simulator
 from controller import Controller
+from actions.arms_up import ArmsUp
+from actions.come_closer import ComeCloser
+from actions.heart import Heart
 from actions.flexible import Flexible
 from actions.salute import Salute
 from actions.shrug import Shrug
+from actions.t_position import TPosition
+from actions.test import Test
 from actions.speak import Speak
 from actions.wave import Wave
 from actions.hands_up import HandsUp
@@ -18,9 +23,14 @@ from actions.wave_recorded import (
 
 ACTIONS = {
     # Scripted (keyframe)
+    "arms_up":       ArmsUp,
+    "come_closer":   ComeCloser,
+    "heart":         Heart,
     "flexible":      Flexible,
     "salute":        Salute,
     "shrug":         Shrug,
+    "t_position":    TPosition,
+    "test":          Test,
     "speak":         Speak,
     "wave":          Wave,
     "hands_up":      HandsUp,

@@ -151,6 +151,143 @@ SHRUG = {
     "right_wrist_yaw":      -1.3923,
 }
 
+# Both arms raised forming a heart shape above the head.
+HEART = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0081,
+    "waist_pitch":  0.0118,
+
+    "left_shoulder_pitch":  0.0458,
+    "left_shoulder_roll":   2.1516,
+    "left_shoulder_yaw":    1.6175,
+    "left_elbow":          -0.0286,
+    "left_wrist_roll":     -1.5038,
+    "left_wrist_pitch":    -0.0086,
+    "left_wrist_yaw":      -0.9847,
+
+    "right_shoulder_pitch": -0.0634,
+    "right_shoulder_roll":  -2.2442,
+    "right_shoulder_yaw":   -1.5251,
+    "right_elbow":           0.0122,
+    "right_wrist_roll":      1.5723,
+    "right_wrist_pitch":     0.0010,
+    "right_wrist_yaw":       1.0164,
+}
+
+# Come closer beckoning gesture — two keyframes.
+COME_CLOSER_1 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0130,
+    "waist_pitch": 0.0569,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -0.1436,
+    "right_shoulder_roll":  -0.3923,
+    "right_shoulder_yaw":   -0.4065,
+    "right_elbow":          -0.0128,
+    "right_wrist_roll":      0.2948,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":      -0.0001,
+}
+
+COME_CLOSER_2 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0209,
+    "waist_pitch":  0.0549,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -0.1436,
+    "right_shoulder_roll":  -0.3923,
+    "right_shoulder_yaw":    0.4935,
+    "right_elbow":          -0.0128,
+    "right_wrist_roll":      0.2948,
+    "right_wrist_pitch":     0.0025,
+    "right_wrist_yaw":       0.5999,
+}
+
+# Both arms extended horizontally — T position.
+T_POSE = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0036,
+    "waist_pitch":  0.0181,
+
+    "left_shoulder_pitch":  0.0475,
+    "left_shoulder_roll":   1.5930,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           1.5215,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0027,
+
+    "right_shoulder_pitch": -0.0436,
+    "right_shoulder_roll":  -1.4918,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":           1.5870,
+    "right_wrist_roll":     -0.0052,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":       0.0,
+}
+
+# Both arms raised — recorded from simulation.
+ARMS_UP = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0066,
+    "waist_pitch":  0.0137,
+
+    "left_shoulder_pitch": -1.5535,
+    "left_shoulder_roll":   1.9516,
+    "left_shoulder_yaw":   -0.0467,
+    "left_elbow":          -0.1275,
+    "left_wrist_roll":     -0.2038,
+    "left_wrist_pitch":    -0.7175,
+    "left_wrist_yaw":      -0.0009,
+
+    "right_shoulder_pitch": -1.4595,
+    "right_shoulder_roll":  -1.8551,
+    "right_shoulder_yaw":   -0.1404,
+    "right_elbow":          -0.2251,
+    "right_wrist_roll":     -0.0052,
+    "right_wrist_pitch":    -0.5984,
+    "right_wrist_yaw":      -0.0133,
+}
+
+# Test pose — single recorded keyframe.
+TEST = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0039,
+    "waist_pitch": 0.0231,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":          -0.0784,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch":  0.2563,
+    "right_shoulder_roll":  -0.2923,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":           0.7871,
+    "right_wrist_roll":     -0.0052,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":      -0.0001,
+}
+
 # Flexible sequence — 5 keyframes recorded from simulation.
 FLEX1 = {
     "waist_yaw":   0.0,
