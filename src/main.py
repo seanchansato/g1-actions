@@ -3,6 +3,7 @@ from simulator import Simulator
 from controller import Controller
 from actions.arms_up import ArmsUp
 from actions.come_closer import ComeCloser
+from actions.handspin import HandSpin
 from actions.heart import Heart
 from actions.push import Push
 from actions.stop import Stop
@@ -28,6 +29,7 @@ ACTIONS = {
     # Scripted (keyframe)
     "arms_up":       ArmsUp,
     "come_closer":   ComeCloser,
+    "handspin":      HandSpin,
     "heart":         Heart,
     "push":          Push,
     "stop":          Stop,

@@ -94,9 +94,9 @@ def convert(keyframes, rate_hz=20.0, hold_on_complete=False, next_action=None):
 # Import poses inline so this script is self-contained when run from src/.
 sys.path.insert(0, "src")
 try:
-    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4, TEST, SPEAK1, SPEAK2, ARMS_UP, T_POSE, COME_CLOSER_1, COME_CLOSER_2, HEART, SPEAKING2_1, SPEAKING2_2, SPEAKING2_3, SPEAKING2_4, PUSH_1, PUSH_2, STOP_1, STOP_2
+    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4, TEST, SPEAK1, SPEAK2, ARMS_UP, T_POSE, COME_CLOSER_1, COME_CLOSER_2, HEART, SPEAKING2_1, SPEAKING2_2, SPEAKING2_3, SPEAKING2_4, PUSH_1, PUSH_2, STOP_1, STOP_2, HANDSPIN_1, HANDSPIN_2
 except ImportError:
-    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4, TEST, SPEAK1, SPEAK2, ARMS_UP, T_POSE, COME_CLOSER_1, COME_CLOSER_2, HEART, SPEAKING2_1, SPEAKING2_2, SPEAKING2_3, SPEAKING2_4, PUSH_1, PUSH_2, STOP_1, STOP_2  # noqa: F811
+    from poses import HOME, SALUTE, HANDS_UP, WAVE_RAISED, SHRUG, FLEX1, FLEX2, FLEX3, FLEX4, TEST, SPEAK1, SPEAK2, ARMS_UP, T_POSE, COME_CLOSER_1, COME_CLOSER_2, HEART, SPEAKING2_1, SPEAKING2_2, SPEAKING2_3, SPEAKING2_4, PUSH_1, PUSH_2, STOP_1, STOP_2, HANDSPIN_1, HANDSPIN_2  # noqa: F811
 
 ACTIONS = {
     "salute": {
@@ -123,6 +123,17 @@ ACTIONS = {
             (1.5, SHRUG),
             (3.5, SHRUG),
             (5.0, HOME),
+        ],
+        "hold_on_complete": False,
+        "next_action": None,
+    },
+    "handspin": {
+        "keyframes": [
+            (0.0, HOME),
+            (1.5, HANDSPIN_1),
+            (3.0, HANDSPIN_2),
+            (4.5, HANDSPIN_1),
+            (6.0, HOME),
         ],
         "hold_on_complete": False,
         "next_action": None,

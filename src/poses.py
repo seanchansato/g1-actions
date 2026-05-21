@@ -151,6 +151,51 @@ SHRUG = {
     "right_wrist_yaw":      -1.3923,
 }
 
+# Hand spin gesture — two keyframes recorded from simulation.
+HANDSPIN_1 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0332,
+    "waist_pitch":  0.1323,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -1.5432,
+    "right_shoulder_roll":  -0.2927,
+    "right_shoulder_yaw":   -2.6179,
+    "right_elbow":           1.5872,
+    "right_wrist_roll":      1.9723,
+    "right_wrist_pitch":     0.0018,
+    "right_wrist_yaw":      -1.5684,
+}
+
+HANDSPIN_2 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0345,
+    "waist_pitch":  0.1305,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -1.5446,
+    "right_shoulder_roll":  -0.2941,
+    "right_shoulder_yaw":    2.6180,
+    "right_elbow":           1.5873,
+    "right_wrist_roll":     -1.9722,
+    "right_wrist_pitch":     0.0017,
+    "right_wrist_yaw":      -1.5683,
+}
+
 # Stop gesture — two keyframes recorded from simulation.
 STOP_1 = {
     "waist_yaw":   0.0,
