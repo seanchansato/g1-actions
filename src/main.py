@@ -4,6 +4,8 @@ from controller import Controller
 from actions.arms_up import ArmsUp
 from actions.come_closer import ComeCloser
 from actions.heart import Heart
+from actions.push import Push
+from actions.stop import Stop
 from actions.speaking2 import Speaking2
 from actions.flexible import Flexible
 from actions.salute import Salute
@@ -27,6 +29,8 @@ ACTIONS = {
     "arms_up":       ArmsUp,
     "come_closer":   ComeCloser,
     "heart":         Heart,
+    "push":          Push,
+    "stop":          Stop,
     "speaking2":     Speaking2,
     "flexible":      Flexible,
     "salute":        Salute,

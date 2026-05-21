@@ -151,6 +151,96 @@ SHRUG = {
     "right_wrist_yaw":      -1.3923,
 }
 
+# Stop gesture — two keyframes recorded from simulation.
+STOP_1 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0108,
+    "waist_pitch":  0.0203,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch":  0.2564,
+    "right_shoulder_roll":  -0.2923,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":          -0.3129,
+    "right_wrist_roll":     -1.4052,
+    "right_wrist_pitch":    -0.0984,
+    "right_wrist_yaw":      -1.5671,
+}
+
+STOP_2 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0362,
+    "waist_pitch":  0.1304,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -1.5433,
+    "right_shoulder_roll":  -0.2922,
+    "right_shoulder_yaw":    0.0936,
+    "right_elbow":           1.4873,
+    "right_wrist_roll":     -1.4052,
+    "right_wrist_pitch":    -0.0984,
+    "right_wrist_yaw":      -1.5670,
+}
+
+# Push gesture — two keyframes recorded from simulation.
+PUSH_1 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0012,
+    "waist_pitch": 0.0435,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":          -0.3784,
+    "left_wrist_roll":      1.3962,
+    "left_wrist_pitch":     0.0051,
+    "left_wrist_yaw":       1.5683,
+
+    "right_shoulder_pitch":  0.2563,
+    "right_shoulder_roll":  -0.2923,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":          -0.3128,
+    "right_wrist_roll":     -1.2052,
+    "right_wrist_pitch":     0.0017,
+    "right_wrist_yaw":      -1.5701,
+}
+
+PUSH_2 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  0.0029,
+    "waist_pitch": 0.2010,
+
+    "left_shoulder_pitch": -0.8523,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":    0.0175,
+    "left_elbow":           0.8218,
+    "left_wrist_roll":      1.3962,
+    "left_wrist_pitch":     0.0045,
+    "left_wrist_yaw":       1.5679,
+
+    "right_shoulder_pitch": -0.6434,
+    "right_shoulder_roll":  -0.2923,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":           0.5872,
+    "right_wrist_roll":     -1.2052,
+    "right_wrist_pitch":     0.0017,
+    "right_wrist_yaw":      -1.5684,
+}
+
 # Speaking2 gesture — 4 keyframes recorded from simulation.
 SPEAKING2_1 = {
     "waist_yaw":   0.0,
