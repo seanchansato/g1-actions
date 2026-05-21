@@ -15,7 +15,10 @@ pip install mujoco
 
 ```bash
 python src/main.py <action>
+python src/main.py <action> --loop   # repeat indefinitely
 ```
+
+Press **Q** to quit the viewer at any time.
 
 | Action | Description |
 |---|---|
@@ -29,7 +32,7 @@ python src/main.py <action>
 | `do_payment` | Payment gesture recorded from real robot |
 | `down_payment` | Down payment gesture recorded from real robot |
 
-The viewer closes automatically when the action finishes.  Scripted actions (`PoseAction`) close when the last keyframe is reached; recorded actions (`TrajectoryAction`) close at the end of the recording unless `loop=True`.
+The viewer closes automatically when the action finishes.  Scripted actions (`PoseAction`) close when the last keyframe is reached; recorded actions (`TrajectoryAction`) close at the end of the recording unless `--loop` is passed.
 
 ## Recording a new action
 
@@ -39,13 +42,26 @@ Launch the recorder:
 python src/record.py
 ```
 
-1. The robot opens in the MuJoCo viewer at the home position.
-2. **Ctrl+click+drag** on any body to perturb a joint into the pose you want.
-3. Press **K** to lock that pose as a keyframe — the robot holds the new position.
-4. Repeat to add more keyframes.
-5. Close the window, then enter a name when prompted.
+The robot opens in the MuJoCo viewer at the home position.  Use keyboard controls to pose the arms, then press **K** to latch the current pose as a keyframe.  The arm joints use gravity compensation — they hold wherever placed rather than snapping back.  Close the window when done and enter a name when prompted.
+
+### Recorder keyboard controls
+
+| Key | Action |
+|---|---|
+| **Tab** | Select next arm joint |
+| **`** (backtick) | Select previous arm joint |
+| **↑ / ↓** | Nudge selected joint ±0.02 rad (fine) |
+| **] / [** | Nudge selected joint ±0.1 rad (coarse) |
+| **K** | Record current pose as a keyframe |
+| Close window | Finish and save |
+
+The terminal prints the selected joint name and its current angle after every change so you always know where you are.
 
 Keyframes are saved to `keyframes/<name>.json`.
+
+### Home position
+
+The recorder reads `keyframes/home.json` on startup.  If that file exists, the right arm is initialized from the stored home position rather than `poses.HOME`, so the recorder always starts from the robot's actual resting pose.
 
 ## Playing back recorded keyframes
 
@@ -53,7 +69,7 @@ Keyframes are saved to `keyframes/<name>.json`.
 python src/playback.py <action_name>
 ```
 
-Loads `keyframes/<action_name>.json`, smoothly interpolates between each keyframe using smoothstep easing (200 physics steps per transition), then holds the final pose.
+Loads `keyframes/<action_name>.json`, smoothly interpolates between each keyframe using smoothstep easing (200 physics steps × 10 substeps per transition), then holds the final pose until the window is closed.
 
 ## Turning a keyframe recording into a runnable action
 
@@ -106,10 +122,12 @@ g1-actions/
 │   └── g1_29dof.xml        # G1 model (free-floating base, torque actuators)
 ├── recordings/             # Real-robot arm trajectories (JSON)
 ├── keyframes/              # Poses recorded with record.py (JSON)
+│   ├── home.json           # Saved home / resting position for the recorder
+│   └── Salute.json         # Salute recorded as keyframes
 └── src/
     ├── main.py             # Entry point — lists all available actions
-    ├── record.py           # Interactive keyframe recorder
-    ├── playback.py         # Keyframe playback
+    ├── record.py           # Interactive keyframe recorder (keyboard-driven)
+    ├── playback.py         # Keyframe playback with smoothstep interpolation
     ├── simulator.py        # MuJoCo viewer loop + qpos seeding
     ├── controller.py       # PD controller (all 29 joints)
     ├── poses.py            # Named poses: STANDING_BASE, HOME, NEUTRAL, SALUTE, …
