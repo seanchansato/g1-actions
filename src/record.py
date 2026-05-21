@@ -26,6 +26,12 @@ _RIGHT_ARM = [
     "right_elbow", "right_wrist_roll", "right_wrist_pitch", "right_wrist_yaw",
 ]
 
+_ARM_KEYWORDS = ("shoulder", "elbow", "wrist")
+
+
+def _is_arm(name):
+    return any(k in name for k in _ARM_KEYWORDS)
+
 _GAINS = {
     "hip":            (100.0, 10.0),
     "knee":           (100.0, 10.0),
@@ -102,17 +108,15 @@ def main():
     def key_callback(keycode):
         if keycode != ord('K'):
             return
-        # Latch current pose into target so PD holds the new position
-        for act_name, (qpos_adr, _, _, _, _) in acts.items():
-            target[act_name] = float(data.qpos[qpos_adr])
-        # Record ctrl array in actuator index order
-        ctrl_snap = [target.get(n, 0.0) for n in joint_names]
+        ctrl_snap = [float(data.qpos[acts[n][0]]) if n in acts else 0.0
+                     for n in joint_names]
         keyframes.append(ctrl_snap)
+        rsp = data.qpos[acts["right_shoulder_pitch"][0]] if "right_shoulder_pitch" in acts else 0
         print(f"  keyframe {len(keyframes):2d} recorded  "
-              f"(right_shoulder_pitch={target.get('right_shoulder_pitch', 0):.3f})")
+              f"(right_shoulder_pitch={rsp:.3f})")
 
     print("Controls:")
-    print("  Ctrl+click+drag  — perturb joints")
+    print("  click+drag       — move joints freely")
     print("  K                — record current pose as a keyframe")
     print("  close window     — finish and save\n")
 
@@ -121,10 +125,18 @@ def main():
     ) as viewer:
         while viewer.is_running():
             for act_name, (qpos_adr, dof_adr, ctrl_idx, kp, kd) in acts.items():
-                q_des = target.get(act_name, 0.0)
-                q     = data.qpos[qpos_adr]
-                dq    = data.qvel[dof_adr]
-                data.ctrl[ctrl_idx] = kp * (q_des - q) - kd * dq
+                if _is_arm(act_name):
+                    # Gravity compensation — arm stays wherever placed
+                    data.ctrl[ctrl_idx] = (
+                        data.qfrc_bias[dof_adr] - kd * data.qvel[dof_adr]
+                    )
+                else:
+                    # Legs/waist: PD hold at target
+                    q_des = target.get(act_name, 0.0)
+                    q     = data.qpos[qpos_adr]
+                    dq    = data.qvel[dof_adr]
+                    data.ctrl[ctrl_idx] = kp * (q_des - q) - kd * dq
+
             mujoco.mj_step(model, data)
             viewer.sync()
 
