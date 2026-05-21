@@ -82,27 +82,27 @@ HOME = {
 NEUTRAL = HOME
 
 # Right hand raised to forehead — military salute.
-# Left arm stays at home.
+# Recorded from simulation using the keyframe recorder.
 SALUTE = {
     "waist_yaw":   0.0,
-    "waist_roll":  0.0,
-    "waist_pitch": 0.0,
+    "waist_roll":  0.0331,
+    "waist_pitch": 0.0117,
 
-    "right_shoulder_pitch": -1.0,
-    "right_shoulder_roll":  -0.3,
-    "right_shoulder_yaw":    0.5,
-    "right_elbow":           1.5,
-    "right_wrist_roll":      0.0,
-    "right_wrist_pitch":    -0.2,
-    "right_wrist_yaw":       0.0,
+    "right_shoulder_pitch":  0.6758,
+    "right_shoulder_roll":  -1.8338,
+    "right_shoulder_yaw":   -1.8065,
+    "right_elbow":          -0.6472,
+    "right_wrist_roll":      1.0551,
+    "right_wrist_pitch":    -0.1111,
+    "right_wrist_yaw":       0.2513,
 
-    "left_shoulder_pitch":  0.2474,
-    "left_shoulder_roll":   0.2935,
-    "left_shoulder_yaw":   -0.0825,
-    "left_elbow":           0.8216,
-    "left_wrist_roll":     -0.0038,
-    "left_wrist_pitch":     0.0063,
-    "left_wrist_yaw":      -0.0026,
+    "left_shoulder_pitch":   0.1863,
+    "left_shoulder_roll":    0.1131,
+    "left_shoulder_yaw":     0.1615,
+    "left_elbow":            1.3149,
+    "left_wrist_roll":       0.0360,
+    "left_wrist_pitch":     -0.0370,
+    "left_wrist_yaw":       -0.0304,
 }
 
 # Both arms raised straight up.
