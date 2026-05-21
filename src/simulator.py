@@ -39,20 +39,26 @@ class Simulator:
     def run(self, controller):
 
         duration = controller.action.duration
+        quit_requested = [False]
+
+        def on_key(keycode):
+            if keycode in (ord('q'), ord('Q')):
+                quit_requested[0] = True
 
         with mujoco.viewer.launch_passive(
             self.model,
-            self.data
+            self.data,
+            key_callback=on_key,
         ) as viewer:
 
-            while viewer.is_running():
+            while viewer.is_running() and not quit_requested[0]:
 
-                controller.update(self.data)
+                if duration is None or controller.elapsed() <= duration:
+                    controller.update(self.data)
+                else:
+                    controller.hold_home(self.data)
 
                 for _ in range(N_SUBSTEPS):
                     mujoco.mj_step(self.model, self.data)
 
                 viewer.sync()
-
-                if duration is not None and controller.elapsed() > duration:
-                    break

@@ -12,9 +12,17 @@
 #   21 left_wrist_yaw        28 right_wrist_yaw        axis 0 0 1
 # Waist:  12 waist_yaw  13 waist_roll  14 waist_pitch
 # Legs:    0-5 left hip/knee/ankle   6-11 right hip/knee/ankle
+#
+# NOTE: shoulder_pitch=0 is NOT arms-at-sides for the G1.  At zero the arm
+# is nearly horizontal (T-pose).  ~+0.79 rad (≈45° positive pitch) rotates
+# the arm to hang straight down.  HANDS_UP uses -1.57 (arm straight up),
+# confirming that negative pitch raises and positive pitch lowers the arm.
 
-# Full 29-joint home pose.  Leg joints are slightly bent (typical upright
-# stance for G1); arms and waist at zero.  Used as:
+# Arms-hanging-down shoulder pitch value (calculated from model geometry).
+_ARM_DOWN = 0.79
+
+# Full 29-joint standing pose.  Leg joints slightly bent; arms hanging at
+# sides.  Used as:
 #   1. Initial qpos seed in the Simulator.
 #   2. PD fallback in the Controller for joints not commanded by the action.
 STANDING_BASE = {
@@ -36,7 +44,7 @@ STANDING_BASE = {
     "waist_roll":         0.0,
     "waist_pitch":        0.0,
 
-    "left_shoulder_pitch":  0.0,
+    "left_shoulder_pitch":  _ARM_DOWN,
     "left_shoulder_roll":   0.0,
     "left_shoulder_yaw":    0.0,
     "left_elbow":           0.0,
@@ -44,7 +52,7 @@ STANDING_BASE = {
     "left_wrist_pitch":     0.0,
     "left_wrist_yaw":       0.0,
 
-    "right_shoulder_pitch": 0.0,
+    "right_shoulder_pitch": _ARM_DOWN,
     "right_shoulder_roll":  0.0,
     "right_shoulder_yaw":   0.0,
     "right_elbow":          0.0,
@@ -53,39 +61,13 @@ STANDING_BASE = {
     "right_wrist_yaw":      0.0,
 }
 
-# Arm pose recorded from a real G1 at rest — natural hanging position with
-# a slight elbow bend.  Used as the start/end for scripted actions so the
-# robot begins and ends in the same state as recorded motions.
+# Home pose: arms hanging straight down at sides, torso upright.
 HOME = {
     "waist_yaw":   0.0,
     "waist_roll":  0.0,
     "waist_pitch": 0.0,
 
-    "left_shoulder_pitch":  0.2474,
-    "left_shoulder_roll":   0.2935,
-    "left_shoulder_yaw":   -0.0825,
-    "left_elbow":           0.8216,
-    "left_wrist_roll":     -0.0038,
-    "left_wrist_pitch":     0.0063,
-    "left_wrist_yaw":      -0.0026,
-
-    "right_shoulder_pitch":  0.2563,
-    "right_shoulder_roll":  -0.2923,
-    "right_shoulder_yaw":    0.0935,
-    "right_elbow":           0.7871,
-    "right_wrist_roll":     -0.0052,
-    "right_wrist_pitch":     0.0024,
-    "right_wrist_yaw":      -0.0001,
-}
-
-# Standing straight: all arm/waist joints at zero.
-# Arms hang at sides, torso upright, facing forward.
-NEUTRAL = {
-    "waist_yaw":   0.0,
-    "waist_roll":  0.0,
-    "waist_pitch": 0.0,
-
-    "left_shoulder_pitch":  0.0,
+    "left_shoulder_pitch":  _ARM_DOWN,
     "left_shoulder_roll":   0.0,
     "left_shoulder_yaw":    0.0,
     "left_elbow":           0.0,
@@ -93,7 +75,7 @@ NEUTRAL = {
     "left_wrist_pitch":     0.0,
     "left_wrist_yaw":       0.0,
 
-    "right_shoulder_pitch": 0.0,
+    "right_shoulder_pitch": _ARM_DOWN,
     "right_shoulder_roll":  0.0,
     "right_shoulder_yaw":   0.0,
     "right_elbow":          0.0,
@@ -102,8 +84,11 @@ NEUTRAL = {
     "right_wrist_yaw":      0.0,
 }
 
+# Alias kept for compatibility.
+NEUTRAL = HOME
+
 # Right hand raised to forehead — military salute.
-# Left arm stays at side (neutral).
+# Left arm stays at side.
 SALUTE = {
     "waist_yaw":   0.0,
     "waist_roll":  0.0,
@@ -117,13 +102,13 @@ SALUTE = {
     "right_wrist_pitch":    -0.2,
     "right_wrist_yaw":       0.0,
 
-    "left_shoulder_pitch":  0.2474,
-    "left_shoulder_roll":   0.2935,
-    "left_shoulder_yaw":   -0.0825,
-    "left_elbow":           0.8216,
-    "left_wrist_roll":     -0.0038,
-    "left_wrist_pitch":     0.0063,
-    "left_wrist_yaw":      -0.0026,
+    "left_shoulder_pitch":  _ARM_DOWN,
+    "left_shoulder_roll":   0.0,
+    "left_shoulder_yaw":    0.0,
+    "left_elbow":           0.0,
+    "left_wrist_roll":      0.0,
+    "left_wrist_pitch":     0.0,
+    "left_wrist_yaw":       0.0,
 }
 
 # Both arms raised straight up.
@@ -150,7 +135,7 @@ HANDS_UP = {
 }
 
 # Right arm raised for waving — wrist oscillates in Wave action.
-# Left arm stays at side (neutral).
+# Left arm stays at side.
 WAVE_RAISED = {
     "waist_yaw":   0.0,
     "waist_roll":  0.0,
@@ -164,11 +149,11 @@ WAVE_RAISED = {
     "right_wrist_pitch":     0.0,
     "right_wrist_yaw":       0.0,
 
-    "left_shoulder_pitch":   0.0,
-    "left_shoulder_roll":    0.0,
-    "left_shoulder_yaw":     0.0,
-    "left_elbow":            0.0,
-    "left_wrist_roll":       0.0,
-    "left_wrist_pitch":      0.0,
-    "left_wrist_yaw":        0.0,
+    "left_shoulder_pitch":  _ARM_DOWN,
+    "left_shoulder_roll":   0.0,
+    "left_shoulder_yaw":    0.0,
+    "left_elbow":           0.0,
+    "left_wrist_roll":      0.0,
+    "left_wrist_pitch":     0.0,
+    "left_wrist_yaw":       0.0,
 }

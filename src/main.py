@@ -30,13 +30,20 @@ ACTIONS = {
 
 def main():
     name = sys.argv[1] if len(sys.argv) > 1 else "salute"
+    loop = "--loop" in sys.argv
+
     action_cls = ACTIONS.get(name)
     if action_cls is None:
         print(f"Unknown action '{name}'. Available: {list(ACTIONS)}")
         sys.exit(1)
 
+    try:
+        action = action_cls(loop=loop)
+    except TypeError:
+        action = action_cls()
+
     sim = Simulator()
-    controller = Controller(sim.model, action_cls())
+    controller = Controller(sim.model, action)
     sim.run(controller)
 
 

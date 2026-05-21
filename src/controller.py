@@ -57,6 +57,13 @@ class Controller:
     def elapsed(self):
         return time.time() - self.start_time if self.start_time is not None else 0.0
 
+    def hold_home(self, data):
+        for act_name, (qpos_adr, dof_adr, ctrl_idx, kp, kd) in self._acts.items():
+            q_des = STANDING_BASE.get(act_name, 0.0)
+            q  = data.qpos[qpos_adr]
+            dq = data.qvel[dof_adr]
+            data.ctrl[ctrl_idx] = kp * (q_des - q) - kd * dq
+
     def update(self, data):
 
         if self.start_time is None:
