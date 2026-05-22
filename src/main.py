@@ -17,6 +17,7 @@ from actions.test import Test
 from actions.speak import Speak
 from actions.wave import Wave
 from actions.hands_up import HandsUp
+from actions.high_five import HighFiveAction
 from actions.wave_recorded import (
     WaveRecorded,
     HandsUpRecorded,
@@ -44,6 +45,7 @@ ACTIONS = {
     "speak":         Speak,
     "wave":          Wave,
     "hands_up":      HandsUp,
+    "high_five":     HighFiveAction,
     # Recorded (real robot)
     "face_wave":     WaveRecorded,
     "hands_up_rec":  HandsUpRecorded,
@@ -52,6 +54,44 @@ ACTIONS = {
     "do_payment":    DoPayment,
     "down_payment":  DownPayment,
 }
+
+
+def _build_high_five(argv):
+    """Parse high_five-specific CLI flags and construct the action.
+
+    Flags:
+      --target X Y Z   explicit pelvis-frame target position (metres)
+      --camera         open the depth camera and scan for a raised hand
+      --left           force left arm
+      --right          force right arm
+    """
+    target_pos = None
+    camera     = None
+    side       = "auto"
+
+    if "--target" in argv:
+        i = argv.index("--target")
+        try:
+            target_pos = [float(argv[i+1]), float(argv[i+2]), float(argv[i+3])]
+        except (IndexError, ValueError):
+            print("Usage: --target X Y Z  (three floats, pelvis-frame metres)")
+            sys.exit(1)
+
+    if "--camera" in argv:
+        from perception.camera import DepthCamera
+        camera = DepthCamera()
+
+    if "--left" in argv:
+        side = "left"
+    elif "--right" in argv:
+        side = "right"
+
+    action = HighFiveAction(target_pos=target_pos, camera=camera, side=side)
+
+    if camera is not None:
+        camera.stop()
+
+    return action
 
 
 def main():
@@ -63,10 +103,13 @@ def main():
         print(f"Unknown action '{name}'. Available: {list(ACTIONS)}")
         sys.exit(1)
 
-    try:
-        action = action_cls(loop=loop)
-    except TypeError:
-        action = action_cls()
+    if name == "high_five":
+        action = _build_high_five(sys.argv[2:])
+    else:
+        try:
+            action = action_cls(loop=loop)
+        except TypeError:
+            action = action_cls()
 
     sim = Simulator()
     controller = Controller(sim.model, action)
