@@ -443,6 +443,51 @@ COME_CLOSER_2 = {
     "right_wrist_yaw":       0.5999,
 }
 
+# Come closer 2 beckoning gesture — two keyframes.
+COME_CLOSER2_1 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0183,
+    "waist_pitch":  0.0875,
+
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.8216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -0.5435,
+    "right_shoulder_roll":  -0.2923,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":           0.3872,
+    "right_wrist_roll":      1.6948,
+    "right_wrist_pitch":    -0.0976,
+    "right_wrist_yaw":       0.0999,
+}
+
+COME_CLOSER2_2 = {
+    "waist_yaw":   0.0,
+    "waist_roll":  -0.0185,
+    "waist_pitch":  0.0529,
+
+    "left_shoulder_pitch":  0.1481,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           1.1216,
+    "left_wrist_roll":     -0.1038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -0.1445,
+    "right_shoulder_roll":  -0.2923,
+    "right_shoulder_yaw":    0.0935,
+    "right_elbow":          -0.6484,
+    "right_wrist_roll":      1.8360,
+    "right_wrist_pitch":    -0.0973,
+    "right_wrist_yaw":       0.6027,
+}
+
 # Both arms extended horizontally — T position.
 T_POSE = {
     "waist_yaw":   0.0,
