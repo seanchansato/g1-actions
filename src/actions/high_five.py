@@ -92,7 +92,7 @@ class HighFiveAction(Action):
 
         # ── Step 1: obtain target position ───────────────────────────────────
         if target_pos is None and camera is not None:
-            target_pos = camera.scan_for_raised_hand(timeout_s=4.0)
+            target_pos = camera.scan_for_raised_hand(timeout_s=10.0)
 
         if target_pos is None:
             arm = "right" if side == "auto" else side
@@ -125,7 +125,9 @@ class HighFiveAction(Action):
 
         q_push = wrist_for_palm_forward(q_push, arm)
         _, R_ee = fk_full(q_push, arm)
-        print(f"[high_five] Palm normal: {R_ee[:,1].round(2)}  (want ≈ [1,0,0])")
+        # For right arm col1 = palm normal; for left arm col1 = back-of-hand (so -X = palm fwd)
+        palm_fwd = R_ee[:,1] if arm == "right" else -R_ee[:,1]
+        print(f"[high_five] Palm faces: {palm_fwd.round(2)}  (want ≈ [1,0,0])")
         push_pose = {**HOME, **joint_dict(q_push, arm)}
 
         # ── Step 5: solve IK for the "palm up" (raised, elbow bent) pose ─────

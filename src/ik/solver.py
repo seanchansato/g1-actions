@@ -175,15 +175,25 @@ def fk_full(q, side="right"):
 # ── Palm-forward wrist solver ─────────────────────────────────────────────────
 
 # Desired end-effector frame for a high-five.
-# Verified against STOP_2 pose where the palm clearly faces forward (+X):
+# Verified against STOP_2 pose (right arm) where the palm clearly faces forward (+X):
 #   col_x ([:,0]) finger direction = [0, 0, 1]  (fingers pointing up)
-#   col_y ([:,1]) palm normal      = [1, 0, 0]  (palm facing the person, +X forward)
+#   col_y ([:,1]) palm normal      = [1, 0, 0]  (palm facing person, +X forward)
 #   col_z ([:,2]) back-of-hand     = col_x × col_y = [0, 1, 0]
-# Same target orientation for both arms.
-_R_PALM_FORWARD = np.array([
+_R_PALM_FORWARD_RIGHT = np.array([
     [0.,  1.,  0.],
     [0.,  0.,  1.],
     [1.,  0.,  0.],
+], dtype=float)
+
+# Left arm: geometry is mirrored so col_y pointing forward (+X) maps to the
+# back of the hand.  Negate col_y and col_z to flip to palm-forward.
+#   col_x ([:,0]) finger direction = [ 0, 0, 1]  (fingers pointing up)
+#   col_y ([:,1]) palm normal      = [-1, 0, 0]  (palm facing person, +X forward)
+#   col_z ([:,2]) back-of-hand     = col_x × col_y = [0, -1, 0]
+_R_PALM_FORWARD_LEFT = np.array([
+    [ 0., -1.,  0.],
+    [ 0.,  0., -1.],
+    [ 1.,  0.,  0.],
 ], dtype=float)
 
 
@@ -222,7 +232,8 @@ def wrist_for_palm_forward(q_arm, side="right"):
     _, R_arm = fk_full(q0, side)
 
     # Required wrist rotation: Rx(wr) @ Ry(wp) @ Rz(wy) = R_arm.T @ R_desired
-    M  = R_arm.T @ _R_PALM_FORWARD
+    R_desired = _R_PALM_FORWARD_LEFT if side == "left" else _R_PALM_FORWARD_RIGHT
+    M  = R_arm.T @ R_desired
     wr, wp, wy = _xyz_euler(M)
 
     # Clamp to wrist joint limits

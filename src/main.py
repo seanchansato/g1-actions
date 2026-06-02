@@ -79,7 +79,7 @@ def _build_high_five(argv):
 
     if "--camera" in argv:
         from perception.camera import DepthCamera
-        camera = DepthCamera()
+        camera = DepthCamera(show=True)
 
     if "--left" in argv:
         side = "left"
