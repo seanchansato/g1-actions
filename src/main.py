@@ -11,6 +11,7 @@ from actions.stop import Stop
 from actions.speaking2 import Speaking2
 from actions.flexible import Flexible
 from actions.salute import Salute
+from actions.salute_new import SaluteNew
 from actions.shrug import Shrug
 from actions.t_position import TPosition
 from actions.test import Test
@@ -57,6 +58,7 @@ ACTIONS = {
     "talking_20s":   Talking20s,
     "flexible":      Flexible,
     "salute":        Salute,
+    "salute_new":    SaluteNew,
     "shrug":         Shrug,
     "t_position":    TPosition,
     "test":          Test,

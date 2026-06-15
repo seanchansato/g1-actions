@@ -105,6 +105,27 @@ SALUTE = {
     "left_wrist_yaw":       -0.0304,
 }
 
+SALUTE_NEW = {
+    "waist_roll":  0.028674,
+    "waist_pitch": 0.030862,
+
+    "right_shoulder_pitch":  -0.048694,
+    "right_shoulder_roll":   -1.491840,
+    "right_shoulder_yaw":    -0.905607,
+    "right_elbow":           -0.747363,
+    "right_wrist_roll":       0.894805,
+    "right_wrist_pitch":     -0.031217,
+    "right_wrist_yaw":        0.002000,
+
+    "left_shoulder_pitch":    0.251677,
+    "left_shoulder_roll":     0.293506,
+    "left_shoulder_yaw":     -0.082497,
+    "left_elbow":             0.821614,
+    "left_wrist_roll":       -0.003800,
+    "left_wrist_pitch":       0.006298,
+    "left_wrist_yaw":        -0.002599,
+}
+
 # Both arms raised straight up.
 HANDS_UP = {
     "waist_yaw":   0.0,
@@ -381,21 +402,21 @@ HEART = {
     "waist_roll":  -0.0081,
     "waist_pitch":  0.0118,
 
-    "left_shoulder_pitch":  0.0458,
-    "left_shoulder_roll":   2.1516,
+    "left_shoulder_pitch":  0.38,
+    "left_shoulder_roll":   1.85,
     "left_shoulder_yaw":    1.6175,
     "left_elbow":          -0.0286,
     "left_wrist_roll":     -1.5038,
     "left_wrist_pitch":    -0.0086,
-    "left_wrist_yaw":      -0.9847,
+    "left_wrist_yaw":      -1.25,
 
-    "right_shoulder_pitch": -0.0634,
-    "right_shoulder_roll":  -2.2442,
+    "right_shoulder_pitch":  0.32,
+    "right_shoulder_roll":  -1.94,
     "right_shoulder_yaw":   -1.5251,
     "right_elbow":           0.0122,
     "right_wrist_roll":      1.5723,
     "right_wrist_pitch":     0.0010,
-    "right_wrist_yaw":       1.0164,
+    "right_wrist_yaw":       1.25,
 }
 
 # Come closer beckoning gesture — two keyframes.
