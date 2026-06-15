@@ -14,7 +14,16 @@ from actions.salute import Salute
 from actions.shrug import Shrug
 from actions.t_position import TPosition
 from actions.test import Test
-from actions.speak import Speak
+from actions.talking_2s import Talking2s
+from actions.talking_4s import Talking4s
+from actions.talking_6s import Talking6s
+from actions.talking_8s import Talking8s
+from actions.talking_10s import Talking10s
+from actions.talking_12s import Talking12s
+from actions.talking_14s import Talking14s
+from actions.talking_16s import Talking16s
+from actions.talking_18s import Talking18s
+from actions.talking_20s import Talking20s
 from actions.wave import Wave
 from actions.hands_up import HandsUp
 from actions.wave_recorded import (
@@ -36,12 +45,21 @@ ACTIONS = {
     "push":          Push,
     "stop":          Stop,
     "speaking2":     Speaking2,
+    "talking_2s":    Talking2s,
+    "talking_4s":    Talking4s,
+    "talking_6s":    Talking6s,
+    "talking_8s":    Talking8s,
+    "talking_10s":   Talking10s,
+    "talking_12s":   Talking12s,
+    "talking_14s":   Talking14s,
+    "talking_16s":   Talking16s,
+    "talking_18s":   Talking18s,
+    "talking_20s":   Talking20s,
     "flexible":      Flexible,
     "salute":        Salute,
     "shrug":         Shrug,
     "t_position":    TPosition,
     "test":          Test,
-    "speak":         Speak,
     "wave":          Wave,
     "hands_up":      HandsUp,
     # Recorded (real robot)

@@ -714,6 +714,79 @@ SPEAK2 = {
     "right_wrist_yaw":       0.0999,
 }
 
+# Talking4s gesture — 4 keyframes recorded from simulation.
+TALKING4S_0 = {
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.0825,
+    "left_elbow":           0.1216,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch":  0.1563,
+    "right_shoulder_roll":  -0.1923,
+    "right_shoulder_yaw":   -0.5065,
+    "right_elbow":           0.0871,
+    "right_wrist_roll":     -0.0052,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":      -0.0001,
+}
+
+TALKING4S_1 = {
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":    0.9175,
+    "left_elbow":           0.1217,
+    "left_wrist_roll":     -0.0038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch":  0.1563,
+    "right_shoulder_roll":  -0.1923,
+    "right_shoulder_yaw":   -0.5065,
+    "right_elbow":           0.0871,
+    "right_wrist_roll":     -0.0052,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":      -0.0001,
+}
+
+TALKING4S_2 = {
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":    0.4175,
+    "left_elbow":           0.6216,
+    "left_wrist_roll":     -0.8038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -0.0436,
+    "right_shoulder_roll":  -0.1923,
+    "right_shoulder_yaw":   -0.8065,
+    "right_elbow":           0.7871,
+    "right_wrist_roll":      0.7948,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":      -0.0001,
+}
+
+TALKING4S_3 = {
+    "left_shoulder_pitch":  0.2474,
+    "left_shoulder_roll":   0.2935,
+    "left_shoulder_yaw":   -0.4825,
+    "left_elbow":           0.5217,
+    "left_wrist_roll":     -0.8038,
+    "left_wrist_pitch":     0.0063,
+    "left_wrist_yaw":      -0.0026,
+
+    "right_shoulder_pitch": -0.0436,
+    "right_shoulder_roll":  -0.1923,
+    "right_shoulder_yaw":    0.7935,
+    "right_elbow":           0.7872,
+    "right_wrist_roll":      0.8948,
+    "right_wrist_pitch":     0.0024,
+    "right_wrist_yaw":      -0.0001,
+}
+
 # Right arm raised for waving — wrist oscillates in Wave action.
 # Left arm stays at home.
 WAVE_RAISED = {

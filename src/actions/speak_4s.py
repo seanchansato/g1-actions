@@ -2,7 +2,7 @@ from actions.base import PoseAction
 from poses import HOME, SPEAK1, SPEAK2
 
 
-class Speak(PoseAction):
+class Speak4s(PoseAction):
 
     def __init__(self):
         super().__init__([
